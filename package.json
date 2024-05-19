@@ -14,14 +14,10 @@
     "@fontsource/inter-tight": "^5.0.20",
     "axios": "^1.6.8",
     "dotenv": "^16.4.5",
-    "formik": "^2.4.6",
     "modern-normalize": "^2.0.0",
     "prettier": "^3.2.5",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-hot-toast": "^2.4.1",
-    "react-loader-spinner": "^6.1.6",
-    "react-modal": "^3.16.1"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
