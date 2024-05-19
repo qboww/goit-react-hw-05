@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import HomePage from "./pages/HomePage/HomePage";
@@ -10,7 +10,7 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 const App = () => {
   return (
-    <Fragment>
+    <div className="container">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />
@@ -19,7 +19,7 @@ const App = () => {
         <Route path="reviews" element={<MovieReviews />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-    </Fragment>
+    </div>
   );
 };
 
