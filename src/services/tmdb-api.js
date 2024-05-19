@@ -1,16 +1,66 @@
 import axios from "axios";
 
-const url =
-  "https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1";
+class TmdbApi {
+  constructor() {
+    this.tmdbApi = axios.create({
+      baseURL: "https://api.themoviedb.org/3",
+      params: {
+        api_key: import.meta.env.VITE_REACT_APP_TMDB_API_KEY,
+      },
+    });
+  }
 
-const options = {
-  headers: {
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0YmU5YTkzYzlmZDFlMmIwZDcxYzdiYjk5NWI2NGQ2NSIsInN1YiI6IjYzNzM5ZmI4Nzk4ZTA2MDBkYzM3YTQ0ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.t9TYdsBewFhJD2yVgrjaODUQEGiqqSyWToAtBE9-dKE",
-  },
-};
+  async fetchMovies() {
+    try {
+      const response = await this.tmdbApi.get("/trending/movie/day");
+      return response.data.results;
+    } catch (error) {
+      console.error("Error fetching trending movies: ", error);
+      throw error;
+    }
+  }
 
-axios
-  .get(url, options)
-  .then((response) => console.log(response))
-  .catch((err) => console.error(err));
+  async fetchMovieById(id) {
+    try {
+      const response = await this.tmdbApi.get(`/movie/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error(`Error fetching movie with ID ${id}: `, error);
+      throw error;
+    }
+  }
+
+  async fetchCast(id) {
+    try {
+      const response = await this.tmdbApi.get(`/movie/${id}/credits`);
+      return response.data;
+    } catch (error) {
+      console.error(`Error fetching cast for movie with ID ${id}: `, error);
+      throw error;
+    }
+  }
+
+  async fetchReviews(id) {
+    try {
+      const response = await this.tmdbApi.get(`/movie/${id}/reviews`);
+      return response.data;
+    } catch (error) {
+      console.error(`Error fetching reviews for movie with ID ${id}: `, error);
+      throw error;
+    }
+  }
+
+  async fetchMovieByQuery(query) {
+    try {
+      const response = await this.tmdbApi.get("/search/movie", {
+        params: { query },
+      });
+      return response.data.results;
+    } catch (error) {
+      console.error(`Error searching movies with query "${query}": `, error);
+      throw error;
+    }
+  }
+}
+
+export default TmdbApi;

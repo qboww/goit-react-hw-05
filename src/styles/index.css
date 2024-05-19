@@ -37,7 +37,6 @@ label {
 
 h1 {
   font-size: 36px;
-  text-align: center;
   font-weight: 600;
 }
 
@@ -46,6 +45,7 @@ h2 {
 }
 
 button {
+  align-self: flex-start;
   cursor: pointer;
   color: black;
   background-color: white;

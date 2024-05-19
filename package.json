@@ -13,6 +13,7 @@
   "dependencies": {
     "@fontsource/inter-tight": "^5.0.20",
     "axios": "^1.6.8",
+    "clsx": "^2.1.1",
     "dotenv": "^16.4.5",
     "modern-normalize": "^2.0.0",
     "prettier": "^3.2.5",
