@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import "modern-normalize";
 import "./styles/index.css";
 
-import App from "./App";
+import App from "./app/App";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>

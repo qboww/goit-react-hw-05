@@ -1,10 +1,6 @@
 .inputNBtn {
   display: flex;
   gap: 8px;
-
-  button {
-    white-space: nowrap;
-  }
 }
 
 li:not(:last-child) {
@@ -35,7 +31,7 @@ li:not(:last-child) {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 16px;
-  padding: 16px 0px;
+  padding-bottom: 16px;
 }
 
 .sideContainer {
@@ -44,14 +40,11 @@ li:not(:last-child) {
   width: 100%;
 }
 
-.error {
-  color: red;
-  margin-top: 16px;
-}
-
 .aboutText {
   font-size: 18px;
   margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid grey;
 
   h1 {
     margin-top: 50px;

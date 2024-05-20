@@ -46,6 +46,7 @@ h2 {
 
 button {
   align-self: flex-start;
+  white-space: nowrap;
   cursor: pointer;
   color: black;
   background-color: white;
@@ -83,6 +84,16 @@ button:hover {
   padding: 16px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.errorMessage {
+  color: red;
+  margin: 16px 0px;
+}
+
+.default-link {
+  text-decoration: underline;
+  color: plum;
 }
 
 @media screen and (min-width: 768px) {

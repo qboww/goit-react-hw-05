@@ -1,0 +1,26 @@
+.header {
+  font-size: 24px;
+  margin: 16px 0px;
+  margin-top: 32px;
+  font-weight: 600;
+}
+
+.aboutText {
+  font-size: 18px;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid grey;
+
+  h1 {
+    margin-top: 50px;
+    margin-bottom: 16px;
+  }
+
+  p:not(:last-child) {
+    margin-bottom: 8px;
+  }
+}
+
+li:not(:last-child) {
+  margin-bottom: 5px;
+}
