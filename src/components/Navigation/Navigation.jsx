@@ -18,9 +18,6 @@ const Navigation = () => {
         <NavLink to="/movies" className={buildLinkClass}>
           Movies
         </NavLink>
-        <NavLink to="/test-api" className={buildLinkClass}>
-          Test API
-        </NavLink>
       </nav>
     </div>
   );

@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
 
 import Navigation from "../components/Navigation/Navigation";
-import TmdbApiTester from "../pages/TmdbApiTester/TmdbApiTester";
 import MovieCast from "../components/MovieCast/MovieCast";
 import MovieReviews from "../components/MovieReviews/MovieReviews";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
@@ -27,7 +26,6 @@ const App = () => {
         <div className="container">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/test-api" element={<TmdbApiTester />} />
             <Route path="/movies" element={<MoviesPage />} />
             <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
               <Route path="cast" element={<MovieCast />} />

@@ -1,41 +1,41 @@
 import React, { useState, useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import useTmdbApi from "../../hooks/useTmdbApi";
-import MovieList from "../../components/MovieList/MovieList";
-import { useSearchParams } from "react-router-dom";
-import { Toaster } from "react-hot-toast";
-
 import css from "./MoviesPage.module.css";
+import { Toaster } from "react-hot-toast";
 
 const MoviesPage = () => {
   const { fetchMovieByQuery } = useTmdbApi();
-  const [query, setQuery] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    if (searchParams.has("query")) {
-      const urlQuery = searchParams.get("query");
-      setQuery(urlQuery);
-      fetchMovieByQuery(urlQuery, setSearchResults);
-    }
-  }, [fetchMovieByQuery, searchParams]); 
-  
-  const handleSearch = (e) => {
+    const getMovieByQuery = async () => {
+      try {
+        const queryWord = searchParams.get("query");
+        if (!queryWord) return;
+
+        const data = await fetchMovieByQuery(queryWord);
+        setMovies(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getMovieByQuery();
+  }, [fetchMovieByQuery, searchParams]);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    fetchMovieByQuery(query, setSearchResults);
-    updateQueryString(query);
-  };
+    const form = e.target;
+    const query = form.elements.title.value.trim();
 
-  const handleInputChange = (e) => {
-    setQuery(e.target.value);
-  };
-
-  const updateQueryString = (query) => {
-    const params = new URLSearchParams();
-    if (query.trim() !== "") {
-      params.append("query", query);
+    if (query === "") {
+      alert("Error, enter movies");
+      return;
     }
-    setSearchParams(params);
+
+    setSearchParams({ query });
+    form.reset();
   };
 
   return (
@@ -51,16 +51,37 @@ const MoviesPage = () => {
         <p>Just fill in search input with desired movie name and we will find it for you</p>
       </div>
 
-      <form onSubmit={handleSearch} className={css.searchContainer}>
-        <input
-          type="text"
-          value={query}
-          onChange={handleInputChange}
-          placeholder="Enter Movie Query"
-        />
-        <button type="submit">Search Movies</button>
+      <form className={css.form} onSubmit={handleSubmit}>
+        <div className={css.wrapper}>
+          <input
+            className={css.input}
+            type="text"
+            autoComplete="off"
+            placeholder="Enter movie..."
+            name="title"
+          />
+          <button type="submit" className={css.button}>
+            Search
+          </button>
+        </div>
       </form>
-      <MovieList movies={searchResults} listName={"Search results: "} />
+
+      {movies.length === 0 && searchParams.get("query") ? (
+        <p className={css.errorSearch}>No movies found. Please try again.</p>
+      ) : (
+        <div className={css.listWrapper}>
+          <ul className={css.list}>
+            {movies.map((movie) => (
+              <li key={movie.id} className={css.item}>
+                <Link className={css.link} to={`/movies/${movie.id}`}>
+                  {movie.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       <Toaster position="top-right" reverseOrder={false} />
     </div>
   );
