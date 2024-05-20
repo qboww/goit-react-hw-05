@@ -1,0 +1,38 @@
+.imagesContainer ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.imagesContainer li {
+  display: flex;
+  align-items: center;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.imagesContainer li img {
+  border-radius: 5px;
+  max-width: 75px;
+  width: 100%;
+  padding-right: 8px;
+}
+.imagesContainer p {
+  font-size: 16px;
+}
+
+.imagesContainer div {
+  padding-right: 20px;
+}
+
+.imagesContainer div div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.imagesContainer h2 {
+  padding-top: 64px;
+  font-size: 32px;
+  margin-bottom: 16px;
+}

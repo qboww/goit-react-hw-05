@@ -27,11 +27,10 @@ const useTmdbApi = () => {
     }
   }, []);
 
-  const fetchCast = useCallback(async (id, setData) => {
+  const fetchCast = useCallback(async (id) => {
     try {
       const data = await tmdbApiInstance.fetchCast(id);
-      setData(data);
-      setErrorMessage(null);
+      return data;
     } catch (error) {
       setErrorMessage(error.message);
     }

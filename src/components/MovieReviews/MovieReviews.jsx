@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useTmdbApi from "../../hooks/useTmdbApi";
 
+import css from "./MovieReviews.module.css";
+
 const stripHtmlTags = (html) => {
   const tempElement = document.createElement("div");
   tempElement.innerHTML = html;
@@ -35,10 +37,12 @@ const MovieReviews = () => {
   }
 
   return (
-    <div>
+    <div className={css.reviewsContainer}>
+      <h3 className={css.category}>Reviews</h3>
+
       {reviews && reviews.results && reviews.results.length > 0 ? (
         <ul>
-          {reviews.results.slice(0, 4).map((review) => {
+          {reviews.results.slice(0, 10).map((review) => {
             return (
               <li key={review.id}>
                 <h3>{review.author}</h3>

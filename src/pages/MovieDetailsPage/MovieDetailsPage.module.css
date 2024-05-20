@@ -58,6 +58,9 @@
 .Links {
   display: flex;
   gap: 30px;
+  border-bottom: 1px solid grey;
+  padding-bottom: 16px;
+  text-decoration: underline;
 }
 
 @media screen and (min-width: 1440px) {
