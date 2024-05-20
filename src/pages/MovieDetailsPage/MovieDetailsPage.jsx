@@ -9,7 +9,7 @@ const MovieDetailsPage = () => {
   const { fetchMovieById, errorMessage } = useTmdbApi();
   const [movie, setMovie] = useState(null);
   const location = useLocation();
-  const backLinkHref = location.state ?? "/movies";
+  const backLinkHref = location.state ?? "/";
 
   useEffect(() => {
     const fetchData = async () => {
@@ -59,7 +59,7 @@ const MovieDetailsPage = () => {
       </div>
 
       <nav className={css.navContainer}>
-        <h3>Additional info</h3>
+        <h2 className={css.additionalInfo}>Additional info</h2>
         <div className={css.linksContainer}>
           <div className={css.links}>
             <NavLink to="cast">Cast</NavLink>
