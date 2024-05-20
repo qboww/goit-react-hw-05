@@ -11,7 +11,7 @@ const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
 
   const location = useLocation();
-  const backLinkHref = location.state ?? "/movies";
+  const backLinkHref = location.state || "/movies";
 
   useEffect(() => {
     const fetchData = async () => {

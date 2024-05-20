@@ -19,6 +19,7 @@ const MoviesPage = () => {
       fetchMovieByQuery(urlQuery, setSearchResults);
     }
   }, [fetchMovieByQuery, searchParams]); 
+  
   const handleSearch = (e) => {
     e.preventDefault();
     fetchMovieByQuery(query, setSearchResults);
