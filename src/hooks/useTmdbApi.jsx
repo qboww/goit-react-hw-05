@@ -17,13 +17,13 @@ const useTmdbApi = () => {
     }
   }, []);
 
-  const fetchMovieById = useCallback(async (id, setData) => {
+  const fetchMovieById = useCallback(async (id) => {
     try {
       const data = await tmdbApiInstance.fetchMovieById(id);
-      setData(data);
-      setErrorMessage(null);
+      return data;
     } catch (error) {
       setErrorMessage(error.message);
+      throw error;
     }
   }, []);
 

@@ -1,11 +1,12 @@
 import React from "react";
+import { Link, useLocation } from "react-router-dom";
 
 import css from "./MovieList.module.css";
 
 const MovieList = ({ movies, listName }) => {
-  if (movies.length === 0) {
-    return null;
-  }
+  const location = useLocation();
+
+  if (movies.length === 0) return null;
 
   return (
     <div className={css.moviesListContainer}>
@@ -13,9 +14,15 @@ const MovieList = ({ movies, listName }) => {
       <ul>
         {movies.map((movie) => (
           <li key={movie.id}>
-            {movie.title}
+            <Link
+              to={{
+                pathname: `/movies/${movie.id.toString()}`,
+                state: { from: location.pathname },
+              }}
+            >
+              {movie.title}
+            </Link>
             <div className={css.badges}>
-              
               <span className={css.releaseBadge}>[{movie.release_date}]</span>
             </div>
           </li>
