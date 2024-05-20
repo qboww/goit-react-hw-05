@@ -75,7 +75,7 @@ const TmdbApiTester = () => {
   return (
     <div>
       <div className={css.aboutText}>
-        <h1>API Tester</h1>
+        <h1>API Methods Tester</h1>
         <p>
           Each field and button fetches some public data from <a href="https://www.themoviedb.org">TMDB</a>
         </p>
