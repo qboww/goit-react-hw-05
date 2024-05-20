@@ -15,7 +15,7 @@ const HomePage = () => {
   return (
     <div>
       <div className={css.aboutText}>
-        <h1>Search movies</h1>
+        <h1>Trending movies</h1>
         <p>
           We provided you some new films of the day, presented by{" "}
           <a className="default-link" href="https://www.themoviedb.org">
