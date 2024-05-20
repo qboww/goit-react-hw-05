@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useTmdbApi from "../../hooks/useTmdbApi";
+import { PulseLoader } from "react-spinners";
 
 import css from "./MovieCast.module.css";
 
 const MovieCast = () => {
-  const { fetchCast, errorMessage } = useTmdbApi();
+  const { fetchCast } = useTmdbApi();
   const { movieId } = useParams();
   const [cast, setCast] = useState(null);
 
@@ -22,12 +23,12 @@ const MovieCast = () => {
     fetchData();
   }, [fetchCast, movieId]);
 
-  if (errorMessage) {
-    return <div>Error: {errorMessage}</div>;
-  }
-
   if (!cast) {
-    return <div>Loading cast...</div>;
+    return (
+      <div className="loaderWrapper">
+        <PulseLoader color="#ffffff" size={10} />
+      </div>
+    );
   }
 
   return (

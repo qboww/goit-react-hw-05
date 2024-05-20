@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useTmdbApi from "../../hooks/useTmdbApi";
-
+import { PulseLoader } from "react-spinners";
 import css from "./MovieReviews.module.css";
 
 const stripHtmlTags = (html) => {
@@ -11,7 +11,7 @@ const stripHtmlTags = (html) => {
 };
 
 const MovieReviews = () => {
-  const { fetchReviews, errorMessage } = useTmdbApi();
+  const { fetchReviews } = useTmdbApi();
   const { movieId } = useParams();
   const [reviews, setReviews] = useState(null);
 
@@ -28,19 +28,19 @@ const MovieReviews = () => {
     fetchData();
   }, [fetchReviews, movieId]);
 
-  if (errorMessage) {
-    return <div>Error: {errorMessage}</div>;
-  }
-
   if (!reviews) {
-    return <div>Loading reviews...</div>;
+    return (
+      <div className="loaderWrapper">
+        <PulseLoader color="#ffffff" size={10} />
+      </div>
+    );
   }
 
   return (
     <div className={css.reviewsContainer}>
       <h2>Reviews</h2>
       <div className={css.reviewsContentContainer}>
-        {reviews && reviews.results && reviews.results.length > 0 ? (
+        {reviews.results.length > 0 ? (
           <ul className={css.reviewsList}>
             {reviews.results.slice(0, 10).map((review) => {
               return (

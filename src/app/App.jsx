@@ -1,11 +1,10 @@
 import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-
-import css from "./App.module.css";
+import { PulseLoader } from "react-spinners";
 
 const Navigation = lazy(() => import("../components/Navigation/Navigation"));
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
-const TmdbApiTester = lazy(() => import("../components/TmdbApiTester/TmdbApiTester"));
+const TmdbApiTester = lazy(() => import("../pages/TmdbApiTester/TmdbApiTester"));
 const MoviesPage = lazy(() => import("../pages/MoviesPage/MoviesPage"));
 const MovieDetailsPage = lazy(() => import("../pages/MovieDetailsPage/MovieDetailsPage"));
 const MovieCast = lazy(() => import("../components/MovieCast/MovieCast"));
@@ -17,7 +16,13 @@ const App = () => {
     <div>
       <Navigation />
 
-      <Suspense fallback={<div className={css.loader}>Loading...</div>}>
+      <Suspense
+        fallback={
+          <div className="loaderWrapper">
+            <PulseLoader color="#ffffff" size={10} />
+          </div>
+        }
+      >
         <div className="container">
           <Routes>
             <Route path="/" element={<HomePage />} />

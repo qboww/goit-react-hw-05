@@ -5,7 +5,9 @@ import css from "./MovieList.module.css";
 const MovieList = ({ movies, listName }) => {
   const location = useLocation();
 
-  if (movies.length === 0) return null;
+  if (movies.length === 0) {
+    return null;
+  }
 
   return (
     <div className={css.moviesListContainer}>

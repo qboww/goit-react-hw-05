@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import useTmdbApi from "../../hooks/useTmdbApi";
 import MovieList from "../../components/MovieList/MovieList";
 import { useSearchParams } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 import css from "./MoviesPage.module.css";
 
 const MoviesPage = () => {
-  const { fetchMovieByQuery, errorMessage } = useTmdbApi();
+  const { fetchMovieByQuery } = useTmdbApi();
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -59,7 +60,7 @@ const MoviesPage = () => {
         <button type="submit">Search Movies</button>
       </form>
       <MovieList movies={searchResults} listName={"Search results: "} />
-      {errorMessage && <p className="errorMessage">{errorMessage}</p>}
+      <Toaster position="top-right" reverseOrder={false} />
     </div>
   );
 };

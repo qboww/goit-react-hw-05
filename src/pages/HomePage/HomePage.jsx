@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import useTmdbApi from "../../hooks/useTmdbApi";
 import MovieList from "../../components/MovieList/MovieList";
+import { Toaster } from "react-hot-toast";
 
 import css from "./HomePage.module.css";
 
 const HomePage = () => {
-  const { fetchTrendingMovies, errorMessage } = useTmdbApi();
+  const { fetchTrendingMovies } = useTmdbApi();
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -24,10 +25,8 @@ const HomePage = () => {
         </p>
         <p>Here are films that you might not have seen!</p>
       </div>
-
       <MovieList movies={movies} listName="Trending movies:" />
-
-      {errorMessage && <p className="errorMessage">{errorMessage}</p>}
+      <Toaster position="top-right" reverseOrder={false} />
     </div>
   );
 };

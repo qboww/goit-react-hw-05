@@ -1,5 +1,7 @@
 import axios from "axios";
 
+import toast from "react-hot-toast";
+
 class TmdbApi {
   constructor() {
     this.tmdbApi = axios.create({
@@ -15,7 +17,7 @@ class TmdbApi {
       const response = await this.tmdbApi.get("/trending/movie/day");
       return response.data.results;
     } catch (error) {
-      console.error("Error fetching trending movies: ", error);
+      toast.error("Error fetching trending movies: ", error);
       throw error;
     }
   }
@@ -25,7 +27,7 @@ class TmdbApi {
       const response = await this.tmdbApi.get(`/movie/${id}`);
       return response.data;
     } catch (error) {
-      console.error(`Error fetching movie with ID ${id}: `, error);
+      toast.error(`Error fetching movie with ID ${id}: `, error);
       throw error;
     }
   }
@@ -35,7 +37,7 @@ class TmdbApi {
       const response = await this.tmdbApi.get(`/movie/${id}/credits`);
       return response.data;
     } catch (error) {
-      console.error(`Error fetching cast for movie with ID ${id}: `, error);
+      toast.error(`Error fetching cast for movie with ID ${id}: `, error);
       throw error;
     }
   }
@@ -45,7 +47,7 @@ class TmdbApi {
       const response = await this.tmdbApi.get(`/movie/${id}/reviews`);
       return response.data;
     } catch (error) {
-      console.error(`Error fetching reviews for movie with ID ${id}: `, error);
+      toast.error(`Error fetching reviews for movie with ID ${id}: `, error);
       throw error;
     }
   }
@@ -59,7 +61,7 @@ class TmdbApi {
       if (results.length === 0) throw new Error(`No results found for query "${query}"`);
       return results;
     } catch (error) {
-      console.error(`Error searching movies with query "${query}": `, error);
+      toast.error(`Error searching movies with query "${query}"`, error);
       throw error;
     }
   }
