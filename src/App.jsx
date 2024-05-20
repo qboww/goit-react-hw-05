@@ -1,31 +1,33 @@
-import React from "react";
+import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import HomePage from "./pages/HomePage/HomePage";
-import MoviesPage from "./pages/MoviesPage/MoviesPage";
-import MovieDetailsPage from "./pages/MovieDetailsPage/MovieDetailsPage";
-import MovieCast from "./components/MovieCast/MovieCast";
-import MovieReviews from "./components/MovieReviews/MovieReviews";
-import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-import Navigation from "./components/Navigation/Navigation";
-import TmdbApiTester from "./components/TmdbApiTester/TmdbApiTester";
+const Navigation = lazy(() => import("./components/Navigation/Navigation"));
+const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
+const TmdbApiTester = lazy(() => import("./components/TmdbApiTester/TmdbApiTester"));
+const MoviesPage = lazy(() => import("./pages/MoviesPage/MoviesPage"));
+const MovieDetailsPage = lazy(() => import("./pages/MovieDetailsPage/MovieDetailsPage"));
+const MovieCast = lazy(() => import("./components/MovieCast/MovieCast"));
+const MovieReviews = lazy(() => import("./components/MovieReviews/MovieReviews"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 
 const App = () => {
   return (
     <div>
       <Navigation />
 
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/test-api" element={<TmdbApiTester />} />
-          <Route path="/movies" element={<MoviesPage />} />
-          <Route path="/movies/:movieId" element={<MovieDetailsPage />} />
-          <Route path="cast" element={<MovieCast />} />
-          <Route path="reviews" element={<MovieReviews />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/test-api" element={<TmdbApiTester />} />
+            <Route path="/movies" element={<MoviesPage />} />
+            <Route path="/movies/:movieId" element={<MovieDetailsPage />} />
+            <Route path="cast" element={<MovieCast />} />
+            <Route path="reviews" element={<MovieReviews />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </div>
+      </Suspense>
     </div>
   );
 };
