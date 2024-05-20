@@ -19,6 +19,7 @@ body {
 
 label {
   display: block;
+  margin-bottom: 6px;
 }
 
 input {
@@ -31,8 +32,8 @@ input {
   width: 100%;
 }
 
-label {
-  margin-bottom: 6px;
+p{
+  line-height: 1.15;
 }
 
 h1 {
