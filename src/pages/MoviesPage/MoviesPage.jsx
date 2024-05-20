@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import useTmdbApi from "../../hooks/useTmdbApi";
+import MovieList from "../../components/MovieList/MovieList";
 
 import css from "./MoviesPage.module.css";
 
@@ -39,18 +40,7 @@ const MoviesPage = () => {
         />
         <button type="submit">Search Movies</button>
       </form>
-
-      {searchResults.length > 0 && (
-        <div>
-          <p className={css.header}>Search Results:</p>
-          <ul>
-            {searchResults.map((movie) => (
-              <li key={movie.id}>{movie.title}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-
+      <MovieList movies={searchResults} listName={"Search results: "}/>
       {errorMessage && <p className="errorMessage">{errorMessage}</p>}
     </div>
   );

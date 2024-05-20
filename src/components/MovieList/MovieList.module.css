@@ -1,0 +1,24 @@
+.moviesListContainer ul {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.moviesListContainer ul li {
+  display: flex;
+}
+
+.badges{
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}
+
+.rateBadge{
+  color: paleturquoise;
+  padding-left: 5px;
+}
+
+.releaseBadge{
+  color: aquamarine;
+}

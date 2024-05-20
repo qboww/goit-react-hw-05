@@ -55,7 +55,9 @@ class TmdbApi {
       const response = await this.tmdbApi.get("/search/movie", {
         params: { query },
       });
-      return response.data.results;
+      const results = response.data.results;
+      if (results.length === 0) throw new Error(`No results found for query "${query}"`);
+      return results;
     } catch (error) {
       console.error(`Error searching movies with query "${query}": `, error);
       throw error;

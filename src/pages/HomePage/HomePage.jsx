@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useTmdbApi from "../../hooks/useTmdbApi";
+import MovieList from "../../components/MovieList/MovieList";
 
 import css from "./HomePage.module.css";
 
@@ -24,14 +25,7 @@ const HomePage = () => {
         <p>Here are films that you might not have seen!</p>
       </div>
 
-      <div>
-        <p className={css.header}>Trending Movies: </p>
-        <ul>
-          {movies.map((movie) => (
-            <li key={movie.id}>{movie.title}</li>
-          ))}
-        </ul>
-      </div>
+      <MovieList movies={movies} listName="Trending movies:" />
 
       {errorMessage && <p className="errorMessage">{errorMessage}</p>}
     </div>
