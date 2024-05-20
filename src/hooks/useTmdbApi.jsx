@@ -45,13 +45,14 @@ const useTmdbApi = () => {
     }
   }, []);
 
-  const fetchMovieByQuery = useCallback(async (query, setData) => {
+  const fetchMovieByQuery = useCallback(async (query) => {
     try {
       const data = await tmdbApiInstance.fetchMovieByQuery(query);
-      setData(data);
       setErrorMessage(null);
+      return data;
     } catch (error) {
       setErrorMessage(error.message);
+      throw error;
     }
   }, []);
 
