@@ -37,11 +37,10 @@ const useTmdbApi = () => {
     }
   }, []);
 
-  const fetchReviews = useCallback(async (id, setData) => {
+  const fetchReviews = useCallback(async (id) => {
     try {
       const data = await tmdbApiInstance.fetchReviews(id);
-      setData(data);
-      setErrorMessage(null);
+      return data;
     } catch (error) {
       setErrorMessage(error.message);
     }

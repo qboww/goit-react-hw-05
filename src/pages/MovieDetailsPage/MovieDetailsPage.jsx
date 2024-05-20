@@ -1,8 +1,7 @@
-// MovieDetailsPage.js
 import React, { useEffect, useState } from "react";
-import { Link, NavLink, useLocation, useParams } from "react-router-dom";
-import useTmdbApi from "../../hooks/useTmdbApi";
+import { Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 
+import useTmdbApi from "../../hooks/useTmdbApi";
 import css from "./MovieDetailsPage.module.css";
 
 const MovieDetailsPage = () => {
@@ -62,9 +61,10 @@ const MovieDetailsPage = () => {
       <nav className={css.navContainer}>
         <h3>Additional info</h3>
         <div className={css.Links}>
-          <NavLink to={`${location.pathname}/cast`}>Cast</NavLink>
-          <NavLink to={`${location.pathname}/reviews`}>Reviews</NavLink>
+          <NavLink to="cast">Cast</NavLink>
+          <NavLink to="reviews">Reviews</NavLink>
         </div>
+        <Outlet />
       </nav>
     </div>
   );
