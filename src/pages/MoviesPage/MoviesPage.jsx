@@ -1,21 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useTmdbApi from "../../hooks/useTmdbApi";
 import MovieList from "../../components/MovieList/MovieList";
+import { useSearchParams } from "react-router-dom";
 
 import css from "./MoviesPage.module.css";
 
 const MoviesPage = () => {
   const { fetchMovieByQuery, errorMessage } = useTmdbApi();
-  const [searchTerm, setSearchTerm] = useState("");
+  const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
 
+  useEffect(() => {
+    if (searchParams.has("query")) {
+      const urlQuery = searchParams.get("query");
+      setQuery(urlQuery);
+      fetchMovieByQuery(urlQuery, setSearchResults);
+    }
+  }, [fetchMovieByQuery, searchParams]); 
   const handleSearch = (e) => {
     e.preventDefault();
-    fetchMovieByQuery(searchTerm, setSearchResults);
+    fetchMovieByQuery(query, setSearchResults);
+    updateQueryString(query);
   };
 
   const handleInputChange = (e) => {
-    setSearchTerm(e.target.value);
+    setQuery(e.target.value);
+  };
+
+  const updateQueryString = (query) => {
+    const params = new URLSearchParams();
+    if (query.trim() !== "") {
+      params.append("query", query);
+    }
+    setSearchParams(params);
   };
 
   return (
@@ -34,13 +52,13 @@ const MoviesPage = () => {
       <form onSubmit={handleSearch} className={css.searchContainer}>
         <input
           type="text"
-          value={searchTerm}
+          value={query}
           onChange={handleInputChange}
           placeholder="Enter Movie Query"
         />
         <button type="submit">Search Movies</button>
       </form>
-      <MovieList movies={searchResults} listName={"Search results: "}/>
+      <MovieList movies={searchResults} listName={"Search results: "} />
       {errorMessage && <p className="errorMessage">{errorMessage}</p>}
     </div>
   );

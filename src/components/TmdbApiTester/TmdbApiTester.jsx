@@ -20,6 +20,35 @@ const TmdbApiTester = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
+  const handleFetchMovieDetails = async () => {
+    try {
+      const data = await fetchMovieById(movieId);
+      setMovieDetails(data);
+      setCast(null); // Reset cast data
+      setReviews(null); // Reset reviews data
+    } catch (error) {
+      console.error("Error fetching movie details: ", error);
+    }
+  };
+
+  const handleFetchCast = async () => {
+    try {
+      const data = await fetchCast(movieId);
+      setCast(data);
+    } catch (error) {
+      console.error("Error fetching cast: ", error);
+    }
+  };
+
+  const handleFetchReviews = async () => {
+    try {
+      const data = await fetchReviews(movieId);
+      setReviews(data);
+    } catch (error) {
+      console.error("Error fetching reviews: ", error);
+    }
+  };
+
   return (
     <div>
       <div className={css.aboutText}>
@@ -65,7 +94,7 @@ const TmdbApiTester = () => {
                 onChange={(e) => setMovieId(e.target.value)}
                 placeholder="Enter Movie ID"
               />
-              <button type="button" onClick={() => fetchMovieById(movieId, setMovieDetails)}>
+              <button type="button" onClick={handleFetchMovieDetails}>
                 Fetch Movie Details
               </button>
             </div>
@@ -75,22 +104,14 @@ const TmdbApiTester = () => {
                 <p className={css.header}>Movie Title: {movieDetails.title}</p>
                 <div className={css.detailsBtns}>
                   <div className={css.btnResponse}>
-                    <button
-                      type="button"
-                      disabled={!movieDetails}
-                      onClick={() => fetchCast(movieId, setCast)}
-                    >
+                    <button type="button" disabled={!movieDetails} onClick={handleFetchCast}>
                       Fetch Cast
                     </button>
                     {cast && <p>Cast count: {cast.cast.length}</p>}
                   </div>
 
                   <div className={css.btnResponse}>
-                    <button
-                      type="button"
-                      disabled={!movieDetails}
-                      onClick={() => fetchReviews(movieId, setReviews)}
-                    >
+                    <button type="button" disabled={!movieDetails} onClick={handleFetchReviews}>
                       Fetch Reviews
                     </button>
                     {reviews && <p>Reviews count: {reviews.results.length}</p>}

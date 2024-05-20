@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom";
+import { Link, NavLink, Outlet, useParams, useLocation } from "react-router-dom";
 
 import useTmdbApi from "../../hooks/useTmdbApi";
 import css from "./MovieDetailsPage.module.css";
@@ -9,7 +9,7 @@ const MovieDetailsPage = () => {
   const { fetchMovieById, errorMessage } = useTmdbApi();
   const [movie, setMovie] = useState(null);
   const location = useLocation();
-  const goBackRef = location.state || "/";
+  const backLinkHref = location.state ?? "/movies";
 
   useEffect(() => {
     const fetchData = async () => {
@@ -67,7 +67,7 @@ const MovieDetailsPage = () => {
           </div>
 
           <div>
-            <Link to={goBackRef}>
+            <Link to={backLinkHref}>
               <button className={css.goBack}>Go Back</button>
             </Link>
           </div>

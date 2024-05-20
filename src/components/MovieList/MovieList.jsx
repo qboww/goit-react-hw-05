@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-
 import css from "./MovieList.module.css";
 
 const MovieList = ({ movies, listName }) => {
@@ -14,12 +13,7 @@ const MovieList = ({ movies, listName }) => {
       <ul>
         {movies.map((movie) => (
           <li key={movie.id}>
-            <Link
-              to={{
-                pathname: `/movies/${movie.id.toString()}`,
-                state: { from: location.pathname },
-              }}
-            >
+            <Link to={`/movies/${movie.id}`} state={location}>
               {movie.title}
             </Link>
             <div className={css.badges}>
