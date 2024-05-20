@@ -35,7 +35,7 @@ const MovieCast = () => {
       <h2>Cast</h2>
       {cast && cast.cast && cast.cast.length > 0 ? (
         <ul>
-          {cast.cast.slice(0, 15).map((actor) => {
+          {cast.cast.slice(0, 10).map((actor) => {
             return (
               <li key={actor.id}>
                 <img src={`https://image.tmdb.org/t/p/w92${actor.profile_path}`} alt={actor.name} />

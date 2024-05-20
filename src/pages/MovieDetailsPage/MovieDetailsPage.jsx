@@ -39,12 +39,15 @@ const MovieDetailsPage = () => {
           <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
         </div>
         <div className={css.dataContainer}>
-          <div>
-            <h2>{movie.title}</h2>
-            <div className={css.dataText}>
-              <h3>Overview</h3>
-              <p>{movie.overview}</p>
-              <div className={css.dataTextContainer}>
+          <div className={css.dataText}>
+            <h1>{movie.title}</h1>
+
+            <div className={css.dataTextContainer}>
+              <div className={css.overviewContainer}>
+                <h3>Overview</h3>
+                <p>{movie.overview}</p>
+              </div>
+              <div className={css.statsContainer}>
                 <h3>Statistics</h3>
                 <p>Release date: {movie.release_date}</p>
                 <p>Vote average: {movie.vote_average}</p>
@@ -52,17 +55,22 @@ const MovieDetailsPage = () => {
               </div>
             </div>
           </div>
-          <Link to={goBackRef}>
-            <button className={css.goBack}>Go Back</button>
-          </Link>
         </div>
       </div>
 
       <nav className={css.navContainer}>
         <h3>Additional info</h3>
-        <div className={css.Links}>
-          <NavLink to="cast">Cast</NavLink>
-          <NavLink to="reviews">Reviews</NavLink>
+        <div className={css.linksContainer}>
+          <div className={css.links}>
+            <NavLink to="cast">Cast</NavLink>
+            <NavLink to="reviews">Reviews</NavLink>
+          </div>
+
+          <div>
+            <Link to={goBackRef}>
+              <button className={css.goBack}>Go Back</button>
+            </Link>
+          </div>
         </div>
         <Outlet />
       </nav>

@@ -9,6 +9,11 @@
   align-items: center;
   border: 1px solid grey;
   border-radius: 5px;
+  width: 100%;
+}
+
+.imagesContainer h2{
+  margin-bottom: 16px;
 }
 
 .imagesContainer li img {
@@ -31,8 +36,12 @@
   gap: 4px;
 }
 
-.imagesContainer h2 {
-  padding-top: 64px;
-  font-size: 32px;
-  margin-bottom: 16px;
+.imagesContainer {
+  padding: 64px 0px;
+}
+
+@media screen and (min-width: 1440px) {
+.imagesContainer li {
+  width: auto;
+}
 }

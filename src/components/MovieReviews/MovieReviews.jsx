@@ -38,22 +38,23 @@ const MovieReviews = () => {
 
   return (
     <div className={css.reviewsContainer}>
-      <h3 className={css.category}>Reviews</h3>
-
-      {reviews && reviews.results && reviews.results.length > 0 ? (
-        <ul>
-          {reviews.results.slice(0, 10).map((review) => {
-            return (
-              <li key={review.id}>
-                <h3>{review.author}</h3>
-                <p>{stripHtmlTags(review.content)}</p>
-              </li>
-            );
-          })}
-        </ul>
-      ) : (
-        <h4>Sorry, but there are no reviews for this movie</h4>
-      )}
+      <h2>Reviews</h2>
+      <div className={css.reviewsContentContainer}>
+        {reviews && reviews.results && reviews.results.length > 0 ? (
+          <ul className={css.reviewsList}>
+            {reviews.results.slice(0, 10).map((review) => {
+              return (
+                <li key={review.id}>
+                  <h4>{review.author}</h4>
+                  <p>{stripHtmlTags(review.content)}</p>
+                </li>
+              );
+            })}
+          </ul>
+        ) : (
+          <h4>Sorry, but there are no reviews for this movie</h4>
+        )}
+      </div>
     </div>
   );
 };
