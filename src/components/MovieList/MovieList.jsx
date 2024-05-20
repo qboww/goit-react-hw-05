@@ -15,7 +15,7 @@ const MovieList = ({ movies, listName }) => {
           <li key={movie.id}>
             {movie.title}
             <div className={css.badges}>
-              <span className={css.rateBadge}>[{movie.vote_average}]</span>
+              
               <span className={css.releaseBadge}>[{movie.release_date}]</span>
             </div>
           </li>
