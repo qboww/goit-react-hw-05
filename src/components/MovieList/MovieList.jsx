@@ -15,7 +15,12 @@ const MovieList = ({ movies, listName }) => {
       <ul>
         {movies.map((movie) => (
           <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`} state={location}>
+            <Link
+              to={{
+                pathname: `/movies/${movie.id.toString()}`,
+                state: { from: location.pathname },
+              }}
+            >
               {movie.title}
             </Link>
             <div className={css.badges}>

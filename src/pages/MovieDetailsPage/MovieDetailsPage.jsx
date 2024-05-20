@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useParams, useLocation } from "react-router-dom";
+import { useRef } from "react";
 import { PulseLoader } from "react-spinners";
 import useTmdbApi from "../../hooks/useTmdbApi";
 import { Toaster } from "react-hot-toast";
@@ -11,7 +12,7 @@ const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
 
   const location = useLocation();
-  const backLinkHref = location.state || "/movies";
+  const goBackRef = useRef(location.state || "/movies");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -70,8 +71,10 @@ const MovieDetailsPage = () => {
             </div>
 
             <div>
-              <Link to={backLinkHref}>
-                <button className={css.goBack}>Go Back</button>
+              <Link to={goBackRef.current}>
+                <button className={css.goBack} onClick={() => window.history.back()}>
+                  Go Back
+                </button>
               </Link>
             </div>
           </div>
