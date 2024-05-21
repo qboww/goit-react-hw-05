@@ -57,24 +57,12 @@
   position: absolute;
   width: 30px;
   height: 30px;
-  background-color: grey;
   border-radius: 0px 8px 0px 8px;
   right: 0px;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
 }
 
-.highVote {
-  background-color: green;
-}
-
-.medVote {
-  background-color: rgb(122, 212, 49);
-}
-
-.lowVote {
-  background-color: orange;
-}
 
 @media screen and (min-width: 768px) {
   .moviesListContainer ul li {

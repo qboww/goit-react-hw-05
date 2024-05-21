@@ -38,43 +38,55 @@ const MovieDetailsPage = () => {
           <div className={css.imageContainer}>
             <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
           </div>
-          <div className={css.dataContainer}>
-            <div className={css.dataText}>
+          <div>
+            <div>
               <h1>{movie.title}</h1>
-
               <div className={css.dataTextContainer}>
-                <div className={css.overviewContainer}>
-                  <h3>Overview</h3>
-                  <div className={css.detailsText}>
-                    <p>{movie.overview}</p>
-                  </div>
+                <div>
+                  <h3 className={css.header}>Overview</h3>
+                  <p className={css.overview}>{movie.overview}</p>
                 </div>
-                <div className={css.statsContainer}>
-                  <h3>Statistics</h3>
-                  <div className={css.detailsText}>
-                    <p>Release date: {movie.release_date}</p>
-                    <p>Vote average: {movie.vote_average}</p>
-                    <p>Votes: {movie.vote_count}</p>
-                  </div>
+                <div>
+                  <h3 className={css.header}>Statistics</h3>
+                  <ul>
+                    <li>
+                      <p>Release date: {movie.release_date}</p>
+                    </li>
+                    <li>
+                      <p>Vote average: {movie.vote_average}</p>
+                    </li>
+                    <li>
+                      <p>Votes: {movie.vote_count}</p>
+                    </li>
+                  </ul>
+                </div>
+                <div className={css.genres}>
+                  <h3 className={css.header}>Genres</h3>
+                  <ul>
+                    {movie.genres.map((genre) => (
+                      <li key={genre.id}>
+                        <p>{genre.name}</p>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <nav className={css.navContainer}>
-          <h2 className={css.additionalInfo}>Additional info</h2>
+        <nav>
           <div className={css.linksContainer}>
             <div className={css.links}>
               <NavLink to="cast">Cast</NavLink>
               <NavLink to="reviews">Reviews</NavLink>
             </div>
 
-            <div>
+            <div className={css.links}>
               <Link to={goBackRef.current}>
-                <button className={css.goBack} onClick={() => window.history.back()}>
+                <a className={css.goBack} onClick={() => window.history.back()}>
                   Go Back
-                </button>
+                </a>
               </Link>
             </div>
           </div>

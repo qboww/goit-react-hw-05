@@ -33,7 +33,7 @@ const MovieCast = () => {
 
   return (
     <div className={css.imagesContainer}>
-      <h2>Cast</h2>
+      <h3 className="header">Cast</h3>
       {cast && cast.cast && cast.cast.length > 0 ? (
         <ul>
           {cast.cast.slice(0, 10).map((actor) => {

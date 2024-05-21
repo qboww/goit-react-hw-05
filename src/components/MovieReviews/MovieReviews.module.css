@@ -1,28 +1,29 @@
 .reviewsContainer ul {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
 }
 
 .reviewsContainer ul li {
   background-color: #292929;
-  padding: 8px;
+  padding: 16px;
   border-radius: 8px;
 }
 
-.reviewsContainer ul li p {
-  font-size: 16px;
-  margin-bottom: 16px;
-}
-
-.reviewsList li h4 {
-  padding-bottom: 8px;
-  margin-bottom: 16px;
+.reviewsList li h3 {
+  padding: 0px 0px 16px 0px;
+  margin-bottom: 8px;
   border-bottom: 1px solid grey;
 }
 
-
-
-.reviewsContentContainer {
+.reviewsList li div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid grey;
   padding-top: 16px;
+}
+
+.review {
+  padding-bottom: 8px;
 }

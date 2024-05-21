@@ -31,9 +31,9 @@ const MovieList = ({ movies, listName }) => {
                   />
                   <p
                     className={clsx(css.vote, {
-                      [css.highVote]: movie.vote_average > 7.5,
-                      [css.medVote]: movie.vote_average <= 7.5,
-                      [css.lowVote]: movie.vote_average <= 6,
+                      ["highVote"]: movie.vote_average > 7.5,
+                      ["medVote"]: movie.vote_average <= 7.5,
+                      ["lowVote"]: movie.vote_average <= 6,
                     })}
                   >
                     {movie.vote_average.toFixed(1)}

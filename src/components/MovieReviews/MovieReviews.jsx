@@ -10,6 +10,12 @@ const stripHtmlTags = (html) => {
   return tempElement.textContent || tempElement.innerText || "";
 };
 
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+
+  return date.toLocaleDateString("en-GB");
+};
+
 const MovieReviews = () => {
   const { fetchReviews } = useTmdbApi();
   const { movieId } = useParams();
@@ -34,16 +40,19 @@ const MovieReviews = () => {
 
   return (
     <div className={css.reviewsContainer}>
-      <h2>Reviews</h2>
-      <div className={css.reviewsContentContainer}>
+      <h3 className="header">Reviews</h3>
+      <div>
         {reviews.results.length > 0 ? (
           <ul className={css.reviewsList}>
             {reviews.results.slice(0, 10).map((review) => {
               return (
                 <li key={review.id}>
-                  <p>{review.rating}</p>
-                  <h4>{review.author}</h4>
-                  <p>{stripHtmlTags(review.content)}</p>
+                  <h3>{review.author}</h3>
+                  <p className={css.review}>{stripHtmlTags(review.content)}</p>
+                  <div>
+                    <p>Comment Date: {formatDate(review.created_at)}</p>
+                    <p>Rating: {review.author_details.rating}/10</p>
+                  </div>
                 </li>
               );
             })}
