@@ -31,6 +31,9 @@
   margin-top: 8px;
 }
 
+.imagesContainer {
+  margin-bottom: 30px;
+}
 
 @media screen and (min-width: 1440px) {
   .imagesContainer li {

@@ -18,7 +18,7 @@
   padding: 30px 0px;
 }
 
-.header{
+.header {
   margin-bottom: 12px;
 }
 
@@ -30,11 +30,11 @@
   text-decoration: underline;
 }
 
-.overview{
+.overview {
   max-width: 600px;
 }
 
-.genres ul{
+.genres ul {
   display: flex;
   gap: 30px;
 }
@@ -48,17 +48,37 @@
   margin-bottom: 30px;
 }
 
+.videosList {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.videosFrame {
+  width: 342px;
+  height: 200px;
+}
+
 @media screen and (min-width: 768px) {
   .detailsContainer {
     flex-wrap: nowrap;
   }
 
   .imageContainer img {
-    max-width: 350px;
-    max-height: 500px;
+    width: 350px;
+    height: 500px;
     object-fit: cover;
   }
 }
 
 @media screen and (min-width: 1440px) {
+  .videosList {
+    justify-content: space-between;
+  }
+
+  .videosFrame {
+    width: 320px;
+    height: 200px;
+  }
 }
