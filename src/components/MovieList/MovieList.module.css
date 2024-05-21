@@ -1,21 +1,94 @@
 .moviesListContainer ul {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
 .moviesListContainer ul li {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
+  border-radius: 8px;
+  width: 100%;
 }
 
-.badges {
-  display: flex;
-  flex-direction: row;
-  gap: 4px;
+.moviesListContainer ul li img {
+  width: 100%;
+  border-radius: 8px 8px 0px 0px;
 }
 
-.releaseBadge {
-  color: powderblue;
+.dataContainer {
+  padding: 12px 8px 12px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btmFixConatiner {
+  background-color: #282828;
+  border-radius: 8px;
+  height: 100%;
+}
+
+.link {
+  outline: none;
+  border: none;
+}
+
+.date {
+  font-size: 12px;
+  color: grey;
+  font-weight: 500;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.imgRateContainer {
+  display: flex;
+  position: relative;
+}
+
+.vote {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: grey;
+  border-radius: 0px 8px 0px 8px;
+  right: 0px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.highVote {
+  background-color: green;
+}
+
+.medVote {
+  background-color: rgb(122, 212, 49);
+}
+
+.lowVote {
+  background-color: orange;
+}
+
+@media screen and (min-width: 768px) {
+  .moviesListContainer ul li {
+    max-width: 160px;
+    width: 100%;
+  }
+
+  .moviesListContainer ul {
+    gap: 16px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .moviesListContainer ul li {
+    max-width: 250px;
+  }
 }

@@ -37,22 +37,22 @@ p {
 }
 
 h1 {
-  font-size: 48px;
+  font-size: 36px;
   font-weight: 600;
 }
 
 h2 {
-  font-size: 32px;
+  font-size: 20px;
   font-weight: 500;
 }
 
 h3 {
-  font-size: 24px;
+  font-size: 12px;
   font-weight: 500;
 }
 
 h4 {
-  font-size: 20px;
+  font-size: 8px;
   font-weight: 50;
 }
 
@@ -130,6 +130,26 @@ button:hover {
 
   .button-reset {
     margin: 0;
+  }
+
+  h1 {
+    font-size: 48px;
+    font-weight: 600;
+  }
+
+  h2 {
+    font-size: 32px;
+    font-weight: 500;
+  }
+
+  h3 {
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  h4 {
+    font-size: 20px;
+    font-weight: 50;
   }
 }
 

@@ -64,7 +64,8 @@ const MoviesPage = () => {
         />
         <button type="submit">Search Movies</button>
       </form>
-      <MovieList movies={searchResults} listName={"Search results: "} />
+
+      <MovieList movies={searchResults} />
       <Toaster position="top-right" reverseOrder={false} />
     </div>
   );

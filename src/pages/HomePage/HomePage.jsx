@@ -25,7 +25,7 @@ const HomePage = () => {
         </p>
         <p>Here are films that you might not have seen!</p>
       </div>
-      <MovieList movies={movies} listName="Trending movies:" />
+      <MovieList movies={movies} />
       <Toaster position="top-right" reverseOrder={false} />
     </div>
   );

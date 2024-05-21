@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import clsx from "clsx";
 import css from "./MovieList.module.css";
 
 const MovieList = ({ movies, listName }) => {
@@ -16,16 +17,34 @@ const MovieList = ({ movies, listName }) => {
         {movies.map((movie) => (
           <li key={movie.id}>
             <Link
+              className={css.link}
               to={{
                 pathname: `/movies/${movie.id.toString()}`,
                 state: { from: location.pathname },
               }}
             >
-              {movie.title}
+              <div className={css.btmFixConatiner}>
+                <div className={css.imgRateContainer}>
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                    alt={movie.title}
+                  />
+                  <p
+                    className={clsx(css.vote, {
+                      [css.highVote]: movie.vote_average > 7.5,
+                      [css.medVote]: movie.vote_average <= 7.5,
+                      [css.lowVote]: movie.vote_average <= 6,
+                    })}
+                  >
+                    {movie.vote_average.toFixed(1)}
+                  </p>
+                </div>
+                <div className={css.dataContainer}>
+                  <p className={css.title}>{movie.title}</p>
+                  <p className={css.date}>{movie.release_date}</p>
+                </div>
+              </div>
             </Link>
-            <div className={css.badges}>
-              <span className={css.releaseBadge}>[{movie.release_date}]</span>
-            </div>
           </li>
         ))}
       </ul>
