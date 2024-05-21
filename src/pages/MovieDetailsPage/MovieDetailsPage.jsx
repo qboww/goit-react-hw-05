@@ -45,13 +45,17 @@ const MovieDetailsPage = () => {
               <div className={css.dataTextContainer}>
                 <div className={css.overviewContainer}>
                   <h3>Overview</h3>
-                  <p>{movie.overview}</p>
+                  <div className={css.detailsText}>
+                    <p>{movie.overview}</p>
+                  </div>
                 </div>
                 <div className={css.statsContainer}>
                   <h3>Statistics</h3>
-                  <p>Release date: {movie.release_date}</p>
-                  <p>Vote average: {movie.vote_average}</p>
-                  <p>Votes: {movie.vote_count}</p>
+                  <div className={css.detailsText}>
+                    <p>Release date: {movie.release_date}</p>
+                    <p>Vote average: {movie.vote_average}</p>
+                    <p>Votes: {movie.vote_count}</p>
+                  </div>
                 </div>
               </div>
             </div>

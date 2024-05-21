@@ -36,6 +36,13 @@
   width: 100%;
 }
 
+.detailsText {
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .links {
   margin-top: 16px;
   display: flex;
@@ -53,14 +60,16 @@
   padding-bottom: 16px;
 }
 
-
-
-.nadditionalInfo {
-  margin-bottom: 16px;
+@media screen and (min-width: 768px) {
+  .detailsContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 30px;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid grey;
+  }
 }
 
 @media screen and (min-width: 1440px) {
-  .detailsContainer {
-    flex-wrap: nowrap;
-  }
 }
