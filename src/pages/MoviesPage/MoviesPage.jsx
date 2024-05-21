@@ -48,7 +48,7 @@ const MoviesPage = () => {
         <h1>Search movies</h1>
         <p>
           Here you are able to find any film you want{" "}
-          <a className="default-link" href="https://www.themoviedb.org">
+          <a className={css.link} href="https://www.themoviedb.org">
             TMDB
           </a>
         </p>

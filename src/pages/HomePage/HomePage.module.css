@@ -2,7 +2,7 @@
   font-size: 18px;
   margin-bottom: 30px;
   padding-bottom: 30px;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.514);
 }
 
 .aboutText h1 {
@@ -12,6 +12,10 @@
 
 .aboutText p:not(:last-child) {
   margin-bottom: 8px;
+}
+
+.link {
+  text-decoration: underline;
 }
 
 @media screen and (min-width: 768px) {

@@ -47,7 +47,7 @@ const MovieReviews = () => {
             {reviews.results.slice(0, 10).map((review) => {
               return (
                 <li key={review.id}>
-                  <h3>{review.author}</h3>
+                  <h4>{review.author}</h4>
                   <p className={css.review}>{stripHtmlTags(review.content)}</p>
                   <div>
                     <p>Comment Date: {formatDate(review.created_at)}</p>
