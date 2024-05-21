@@ -41,7 +41,10 @@ const MovieList = ({ movies, listName }) => {
                 </div>
                 <div className={css.dataContainer}>
                   <p className={css.title}>{movie.title}</p>
-                  <p className={css.date}>{movie.release_date}</p>
+                  <div className={css.cardBottom}>
+                    <p className={css.popularity}>{movie.vote_count} votes</p>
+                    <p className={css.date}>{movie.release_date}</p>
+                  </div>
                 </div>
               </div>
             </Link>

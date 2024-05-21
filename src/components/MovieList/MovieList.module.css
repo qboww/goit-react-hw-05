@@ -7,7 +7,6 @@
 }
 
 .moviesListContainer ul li {
-  border-radius: 8px;
   width: 100%;
 }
 
@@ -20,13 +19,11 @@
   padding: 12px 8px 12px 8px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
 
 .btmFixConatiner {
   background-color: #282828;
   border-radius: 8px;
-  height: 100%;
 }
 
 .link {
@@ -35,9 +32,15 @@
 }
 
 .date {
-  font-size: 12px;
+  font-size: 14px;
   color: grey;
-  font-weight: 500;
+  font-weight: 400;
+}
+
+.popularity {
+  font-size: 14px;
+  color: grey;
+  font-weight: 400;
 }
 
 .title {
@@ -48,6 +51,14 @@
 .imgRateContainer {
   display: flex;
   position: relative;
+}
+
+.cardBottom{
+  border-top: 1px solid rgba(128, 128, 128, 0.534);
+  padding-top: 8px;
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .vote {
@@ -62,7 +73,6 @@
   font-size: 16px;
   font-weight: 500;
 }
-
 
 @media screen and (min-width: 768px) {
   .moviesListContainer ul li {
