@@ -41,6 +41,7 @@ const MovieReviews = () => {
             {reviews.results.slice(0, 10).map((review) => {
               return (
                 <li key={review.id}>
+                  <p>{review.rating}</p>
                   <h4>{review.author}</h4>
                   <p>{stripHtmlTags(review.content)}</p>
                 </li>

@@ -58,6 +58,7 @@
   gap: 30px;
   border-bottom: 1px solid grey;
   padding-bottom: 16px;
+  margin-bottom: 32px;
 }
 
 @media screen and (min-width: 768px) {
@@ -65,8 +66,8 @@
     display: flex;
     flex-wrap: nowrap;
     gap: 30px;
-    padding-bottom: 16px;
-    margin-bottom: 16px;
+    margin-top: 16px;
+    padding-bottom: 32px;
     border-bottom: 1px solid grey;
   }
 }
