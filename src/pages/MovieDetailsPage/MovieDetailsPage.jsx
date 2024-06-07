@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useParams, useLocation } from "react-router-dom";
 import { useRef } from "react";
-import { PulseLoader } from "react-spinners";
+import Loader from "../../components/Loader/Loader";
 import useTmdbApi from "../../hooks/useTmdbApi";
 import { Toaster } from "react-hot-toast";
 import css from "./MovieDetailsPage.module.css";
@@ -42,11 +42,7 @@ const MovieDetailsPage = () => {
   }, [fetchMovieById, fetchVideos, movieId]);
 
   if (!movie) {
-    return (
-      <div className="loaderWrapper">
-        <PulseLoader color="#ffffff" size={10} />
-      </div>
-    );
+    return <Loader />;
   }
 
   return (
@@ -101,10 +97,12 @@ const MovieDetailsPage = () => {
             </div>
 
             <div className={css.links}>
-              <Link to={goBackRef.current}>
-                <a className={css.goBack} onClick={() => window.history.back()}>
-                  Go Back
-                </a>
+              <Link
+                to={goBackRef.current}
+                className={css.goBack}
+                onClick={() => window.history.back()}
+              >
+                Go Back
               </Link>
             </div>
           </div>
@@ -115,9 +113,7 @@ const MovieDetailsPage = () => {
       <div className={css.videoContainer}>
         <h3 className={css.header}>Trailers and videos</h3>
         {loadingVideos ? (
-          <div className="loaderWrapper">
-            <PulseLoader color="#ffffff" size={10} />
-          </div>
+          <Loader />
         ) : videos.length > 0 ? (
           <ul className={css.videosList}>
             {videos.slice(0, 4).map((video) => (

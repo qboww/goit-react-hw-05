@@ -12,6 +12,7 @@
   background-color: #292929;
   border-radius: 8px;
   width: 100%;
+  padding-right: 30px;
 }
 
 .imagesContainer h2 {
@@ -25,12 +26,19 @@
   padding-right: 8px;
 }
 
-.imagesContainer div {
-  padding-right: 20px;
-}
-
-.imagesContainer div div {
-  margin-top: 8px;
+.noImagePlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #444;
+  width: 75px;
+  height: 100.5px;
+  color: #fff;
+  border-radius: 8px 0px 0px 8px;
+  font-size: 12px;
+  text-align: center;
+  padding: 8px;
+  margin-right: 8px;
 }
 
 .imagesContainer {

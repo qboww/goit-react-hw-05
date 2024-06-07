@@ -5,12 +5,10 @@ import { BrowserRouter } from "react-router-dom";
 import "modern-normalize";
 import "./styles/index.css";
 
-import App from "./app/App";
+import App from "./App";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    {/* <React.StrictMode> */}
     <App />
-    {/* </React.StrictMode> */}
   </BrowserRouter>,
 );
