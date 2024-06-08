@@ -8,10 +8,8 @@ import css from "./MovieDetailsPage.module.css";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
-  const { fetchMovieById, fetchVideos } = useTmdbApi();
+  const { fetchMovieById } = useTmdbApi();
   const [movie, setMovie] = useState(null);
-  const [videos, setVideos] = useState([]);
-  const [loadingVideos, setLoadingVideos] = useState(true);
 
   const location = useLocation();
   const goBackRef = useRef(location.state || "/movies");
@@ -26,20 +24,8 @@ const MovieDetailsPage = () => {
       }
     };
 
-    const fetchVideoData = async () => {
-      try {
-        const videoData = await fetchVideos(movieId);
-        setVideos(videoData.results);
-      } catch (error) {
-        console.error("Error fetching videos:", error);
-      } finally {
-        setLoadingVideos(false);
-      }
-    };
-
     fetchData();
-    fetchVideoData();
-  }, [fetchMovieById, fetchVideos, movieId]);
+  }, [fetchMovieById, movieId]);
 
   if (!movie) {
     return <Loader />;
@@ -108,31 +94,6 @@ const MovieDetailsPage = () => {
           </div>
           <Outlet />
         </nav>
-      </div>
-
-      <div className={css.videoContainer}>
-        <h3 className={css.header}>Trailers and videos</h3>
-        {loadingVideos ? (
-          <Loader />
-        ) : videos.length > 0 ? (
-          <ul className={css.videosList}>
-            {videos.slice(0, 4).map((video) => (
-              <li key={video.id}>
-                {video.site === "YouTube" && (
-                  <iframe
-                    className={css.videosFrame}
-                    src={`https://www.youtube.com/embed/${video.key}`}
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    title={video.name}
-                  ></iframe>
-                )}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No videos available for this movie.</p>
-        )}
       </div>
 
       <Toaster position="top-right" reverseOrder={false} />

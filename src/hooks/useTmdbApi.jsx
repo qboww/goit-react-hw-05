@@ -56,22 +56,12 @@ const useTmdbApi = () => {
     }
   }, []);
 
-  const fetchVideos = useCallback(async (id) => {
-    try {
-      const data = await tmdbApiInstance.fetchVideos(id);
-      return data;
-    } catch (error) {
-      setErrorMessage(error.message);
-    }
-  }, []);
-
   return {
     fetchTrendingMovies,
     fetchMovieById,
     fetchCast,
     fetchReviews,
     fetchMovieByQuery,
-    fetchVideos,
     errorMessage,
   };
 };
