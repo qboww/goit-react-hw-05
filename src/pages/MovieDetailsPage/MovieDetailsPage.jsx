@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink, Outlet, useParams, useLocation } from "react-router-dom";
+import { Link, NavLink, Outlet, useParams, useLocation, Navigate } from "react-router-dom";
 import { useRef } from "react";
 import Loader from "../../components/Loader/Loader";
 import useTmdbApi from "../../hooks/useTmdbApi";
@@ -80,6 +80,8 @@ const MovieDetailsPage = () => {
             Go Back
           </Link>
         </div>
+        {/* Navigate to the cast route by default */}
+        {location.pathname === `/movies/${movieId}` && <Navigate to="cast" replace />}
         <Outlet />
       </nav>
 

@@ -60,20 +60,32 @@
   font-size: 16px;
 }
 
+.genresSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .genreBadges {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  cursor: pointer;
 }
 
 .genreBadge {
-  display: inline-block;
   background-color: #00aaff;
   color: #ffffff;
   padding: 5px 10px;
   border-radius: 12px;
   font-size: 14px;
-  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.genreBadge:hover {
+  background-color: #ffaa00;
+  transform: translateY(-2px);
 }
 
 .navContainer {
