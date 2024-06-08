@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useTmdbApi from "../../hooks/useTmdbApi";
-import { PulseLoader } from "react-spinners";
+import Loader from "../../components/Loader/Loader";
 import css from "./MovieReviews.module.css";
 
 const stripHtmlTags = (html) => {
@@ -31,11 +31,7 @@ const MovieReviews = () => {
   }, [fetchReviews, movieId]);
 
   if (!reviews) {
-    return (
-      <div className="loaderWrapper">
-        <PulseLoader color="#ffffff" size={10} />
-      </div>
-    );
+    return <Loader />;
   }
 
   return (

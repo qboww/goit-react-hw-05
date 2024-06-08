@@ -12,10 +12,10 @@ const MovieList = ({ movies, listName }) => {
 
   return (
     <div className={css.moviesListContainer}>
-      <p className="header">{listName}</p>
-      <ul>
+      <p className={css.header}>{listName}</p>
+      <ul className={css.moviesList}>
         {movies.map((movie) => (
-          <li key={movie.id}>
+          <li key={movie.id} className={css.movieCard}>
             <Link
               className={css.link}
               to={{
@@ -23,17 +23,26 @@ const MovieList = ({ movies, listName }) => {
                 state: { from: location.pathname },
               }}
             >
-              <div className={css.btmFixConatiner}>
-                <div className={css.imgRateContainer}>
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                    alt={movie.title}
-                  />
+              <div className={css.cardContent}>
+                <div
+                  className={clsx(css.imgRateContainer, {
+                    [css.noImage]: !movie.poster_path,
+                  })}
+                >
+                  {movie.poster_path ? (
+                    <img
+                      src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                      alt={movie.title}
+                      className={css.img}
+                    />
+                  ) : (
+                    <div className={css.noImagePlaceholder}>No Image</div>
+                  )}
                   <p
                     className={clsx(css.vote, {
-                      ["highVote"]: movie.vote_average > 7.5,
-                      ["medVote"]: movie.vote_average <= 7.5,
-                      ["lowVote"]: movie.vote_average <= 6,
+                      [css.highVote]: movie.vote_average > 7.5,
+                      [css.medVote]: movie.vote_average <= 7.5 && movie.vote_average > 6,
+                      [css.lowVote]: movie.vote_average <= 6,
                     })}
                   >
                     {movie.vote_average.toFixed(1)}
@@ -41,10 +50,10 @@ const MovieList = ({ movies, listName }) => {
                 </div>
                 <div className={css.dataContainer}>
                   <p className={css.title}>{movie.title}</p>
-                  <div className={css.cardBottom}>
-                    <p className={css.popularity}>{movie.vote_count} votes</p>
-                    <p className={css.date}>{movie.release_date}</p>
-                  </div>
+                </div>
+                <div className={css.cardBottom}>
+                  <p className={css.popularity}>{movie.vote_count} votes</p>
+                  <p className={css.date}>{movie.release_date}</p>
                 </div>
               </div>
             </Link>

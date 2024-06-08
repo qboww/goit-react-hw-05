@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useTmdbApi from "../../hooks/useTmdbApi";
-import { PulseLoader } from "react-spinners";
-
+import Loader from "../../components/Loader/Loader";
 import css from "./MovieCast.module.css";
 
 const MovieCast = () => {
@@ -24,11 +23,7 @@ const MovieCast = () => {
   }, [fetchCast, movieId]);
 
   if (!cast) {
-    return (
-      <div className="loaderWrapper">
-        <PulseLoader color="#ffffff" size={10} />
-      </div>
-    );
+    return <Loader />;
   }
 
   return (
@@ -39,7 +34,15 @@ const MovieCast = () => {
           {cast.cast.slice(0, 10).map((actor) => {
             return (
               <li key={actor.id}>
-                <img src={`https://image.tmdb.org/t/p/w92${actor.profile_path}`} alt={actor.name} />
+                {actor.profile_path ? (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w92${actor.profile_path}`}
+                    alt={actor.name}
+                    className={css.img}
+                  />
+                ) : (
+                  <div className={css.noImagePlaceholder}>No Image</div>
+                )}
                 <div>
                   <h3>{actor.name}</h3>
                   <div>

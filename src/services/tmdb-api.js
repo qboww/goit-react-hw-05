@@ -64,16 +64,6 @@ class TmdbApi {
       throw error;
     }
   }
-
-  async fetchVideos(id) {
-    try {
-      const response = await this.tmdbApi.get(`/movie/${id}/videos`);
-      return response.data;
-    } catch (error) {
-      toast.error(`Error fetching videos for movie with ID ${id}: `, error);
-      throw error;
-    }
-  }
 }
 
 export default TmdbApi;
