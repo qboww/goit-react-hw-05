@@ -12,7 +12,6 @@ const stripHtmlTags = (html) => {
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
-
   return date.toLocaleDateString("en-GB");
 };
 
@@ -23,8 +22,12 @@ const MovieReviews = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchReviews(movieId);
-      setReviews(data);
+      try {
+        const data = await fetchReviews(movieId);
+        setReviews(data);
+      } catch (error) {
+        console.error("Error fetching reviews:", error);
+      }
     };
 
     fetchData();
@@ -36,22 +39,22 @@ const MovieReviews = () => {
 
   return (
     <div className={css.reviewsContainer}>
-      <h3 className="header">Reviews</h3>
+      <h3 className={css.header}>Reviews</h3>
       <div>
         {reviews.results.length > 0 ? (
           <ul className={css.reviewsList}>
-            {reviews.results.slice(0, 10).map((review) => {
-              return (
-                <li key={review.id}>
-                  <h4>{review.author}</h4>
-                  <p className={css.review}>{stripHtmlTags(review.content)}</p>
-                  <div>
-                    <p>Comment Date: {formatDate(review.created_at)}</p>
-                    <p>Rating: {review.author_details.rating}/10</p>
-                  </div>
-                </li>
-              );
-            })}
+            {reviews.results.slice(0, 10).map((review) => (
+              <li key={review.id} className={css.reviewItem}>
+                <div className={css.reviewHeader}>
+                  <h4 className={css.author}>{review.author}</h4>
+                  <span className={css.reviewRating}>{review.author_details.rating}/10</span>
+                </div>
+                <p className={css.reviewContent}>{stripHtmlTags(review.content)}</p>
+                <div className={css.reviewDetails}>
+                  <p className={css.reviewDate}>Comment Date: {formatDate(review.created_at)}</p>
+                </div>
+              </li>
+            ))}
           </ul>
         ) : (
           <h4>Sorry, but there are no reviews for this movie</h4>

@@ -3,7 +3,6 @@ import useTmdbApi from "../../hooks/useTmdbApi";
 import MovieList from "../../components/MovieList/MovieList";
 import { useSearchParams } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-
 import css from "./MoviesPage.module.css";
 
 const MoviesPage = () => {
@@ -43,16 +42,23 @@ const MoviesPage = () => {
   };
 
   return (
-    <div>
+    <div className={css.container}>
       <div className={css.aboutText}>
-        <h1>Search movies</h1>
-        <p>
+        <h1 className={css.title}>Search Movies</h1>
+        <p className={css.description}>
           Here you are able to find any film you want{" "}
-          <a className={css.link} href="https://www.themoviedb.org">
+          <a
+            className={css.link}
+            href="https://www.themoviedb.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             TMDB
           </a>
         </p>
-        <p>Just fill in search input with desired movie name and we will find it for you</p>
+        <p className={css.description}>
+          Just fill in the search input with the desired movie name and we will find it for you
+        </p>
       </div>
 
       <form onSubmit={handleSearch} className={css.searchContainer}>
@@ -61,8 +67,11 @@ const MoviesPage = () => {
           value={query}
           onChange={handleInputChange}
           placeholder="Enter Movie Query"
+          className={css.searchInput}
         />
-        <button type="submit">Search Movies</button>
+        <button type="submit" className={css.searchButton}>
+          Search Movies
+        </button>
       </form>
 
       <MovieList movies={searchResults} />

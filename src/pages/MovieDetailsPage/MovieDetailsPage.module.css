@@ -1,8 +1,15 @@
+.container {
+  background-color: #1c1c1c;
+  padding: 20px;
+  border-radius: 8px;
+  color: #ffffff;
+}
+
 .detailsContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 50px;
-  margin-bottom: 16px;
+  gap: 30px;
+  margin-bottom: 30px;
 }
 
 .imageContainer img {
@@ -12,32 +19,65 @@
   border-radius: 8px;
 }
 
+.infoContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
 .dataTextContainer {
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  padding: 30px 0px;
+  gap: 20px;
 }
 
 .header {
-  margin-bottom: 12px;
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
-.links {
-  display: flex;
-  gap: 30px;
-  align-items: center;
-  font-size: 18px;
-  text-decoration: underline;
+.overviewSection, .statisticsSection, .genresSection {
+  background-color: #292929;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .overview {
-  max-width: 600px;
+  font-size: 16px;
+  line-height: 1.75;
 }
 
-.genres ul {
+.statisticsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+}
+
+.genreBadges {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.genreBadge {
+  display: inline-block;
+  background-color: #00aaff;
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.navContainer {
+  margin-top: 30px;
 }
 
 .linksContainer {
@@ -49,16 +89,34 @@
   margin-bottom: 30px;
 }
 
-.videosList {
+.links {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
+  gap: 30px;
 }
 
-.videosFrame {
-  width: 342px;
-  height: 200px;
+.navLink {
+  font-size: 18px;
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+.navLink:hover, .navLink.active {
+  color: #00aaff;
+}
+
+.goBack {
+  font-size: 18px;
+  text-decoration: none;
+  color: #00aaff;
+  background-color: #292929;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.goBack:hover {
+  background-color: #1c1c1c;
 }
 
 @media screen and (min-width: 768px) {
@@ -74,12 +132,7 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .videosList {
-    justify-content: space-between;
-  }
-
-  .videosFrame {
-    width: 320px;
-    height: 200px;
+  .navContainer {
+    flex-direction: row;
   }
 }
