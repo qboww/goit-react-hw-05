@@ -149,6 +149,6 @@
 
 @media screen and (min-width: 1440px) {
   .movieCard {
-    flex: 1 1 calc(25% - 16px); /* Four items per row with 16px gap */
+    flex: 1 1 calc(20% - 16px); /* Four items per row with 16px gap */
   }
 }
