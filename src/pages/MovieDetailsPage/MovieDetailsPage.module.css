@@ -41,7 +41,9 @@
   margin-bottom: 10px;
 }
 
-.overviewSection, .statisticsSection, .genresSection {
+.overviewSection,
+.statisticsSection,
+.genresSection {
   background-color: #292929;
   padding: 20px;
   border-radius: 8px;
@@ -58,6 +60,7 @@
   padding: 0;
   margin: 0;
   font-size: 16px;
+  line-height: 1.75;
 }
 
 .genresSection {
@@ -80,7 +83,9 @@
   border-radius: 12px;
   font-size: 14px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s, transform 0.3s;
+  transition:
+    background-color 0.3s,
+    transform 0.3s;
 }
 
 .genreBadge:hover {
@@ -113,7 +118,8 @@
   transition: color 0.3s;
 }
 
-.navLink:hover, .navLink.active {
+.navLink:hover,
+.navLink.active {
   color: #00aaff;
 }
 

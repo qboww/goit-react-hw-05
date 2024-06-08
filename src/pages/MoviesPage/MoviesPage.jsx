@@ -4,6 +4,7 @@ import MovieList from "../../components/MovieList/MovieList";
 import { useSearchParams } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import css from "./MoviesPage.module.css";
+import appCss from "../../App.module.css";
 
 const MoviesPage = () => {
   const { fetchMovieByQuery } = useTmdbApi();
@@ -42,7 +43,7 @@ const MoviesPage = () => {
   };
 
   return (
-    <div className={css.container}>
+    <div className={appCss.contentContainer}>
       <div className={css.aboutText}>
         <h1 className={css.title}>Search Movies</h1>
         <p className={css.description}>
