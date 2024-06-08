@@ -1,29 +1,39 @@
-.imagesContainer ul {
+.imagesContainer {
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #1c1c1c;
+  border-radius: 8px;
+  color: #ffffff;
+}
+
+.header {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.castList {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.514);
-  padding-bottom: 16px;
+  list-style: none;
+  padding: 0;
 }
 
-.imagesContainer li {
+.castItem {
   display: flex;
   align-items: center;
   background-color: #292929;
   border-radius: 8px;
+  padding: 16px;
   width: 100%;
-  padding-right: 30px;
+  max-width: 400px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.imagesContainer h2 {
-  margin-bottom: 16px;
-}
-
-.imagesContainer li img {
+.img {
   border-radius: 8px;
   max-width: 75px;
-  width: 100%;
-  padding-right: 8px;
+  margin-right: 16px;
 }
 
 .noImagePlaceholder {
@@ -32,21 +42,32 @@
   justify-content: center;
   background-color: #444;
   width: 75px;
-  height: 100.5px;
+  height: 112.5px;
   color: #fff;
-  border-radius: 8px 0px 0px 8px;
+  border-radius: 8px;
   font-size: 12px;
   text-align: center;
-  padding: 8px;
-  margin-right: 8px;
+  margin-right: 16px;
 }
 
-.imagesContainer {
-  margin-bottom: 30px;
+.actorDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.actorName {
+  font-size: 18px;
+  margin: 0;
+  margin-bottom: 8px;
+}
+
+.characterName, .actorPopularity {
+  font-size: 14px;
+  margin: 0;
 }
 
 @media screen and (min-width: 1440px) {
-  .imagesContainer li {
-    width: auto;
+  .castItem {
+    width: calc(50% - 16px);
   }
 }
